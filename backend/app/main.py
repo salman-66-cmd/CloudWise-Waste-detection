@@ -22,6 +22,7 @@ from app.api.alerts import router as alerts_router
 from app.api.reports import router as reports_router
 from app.api.settings import router as settings_router
 from app.api.system import router as system_router
+from app.api.mock_targets import router as mock_targets_router
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -104,6 +105,7 @@ for prefix in ("/api", "/api/v1"):
     app.include_router(alerts_router, prefix=prefix)
     app.include_router(reports_router, prefix=prefix)
     app.include_router(settings_router, prefix=prefix)
+    app.include_router(mock_targets_router, prefix=prefix)
 
 @app.get("/")
 def root():
