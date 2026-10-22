@@ -92,17 +92,18 @@ async def global_exception_handler(request: Request, exc: Exception):
         content={"detail": "An internal server error occurred. Please try again or inspect server logs."}
     )
 
-# Include API routers
-app.include_router(system_router, prefix="/api")
-app.include_router(auth_router, prefix="/api")
-app.include_router(dashboard_router, prefix="/api")
-app.include_router(resources_router, prefix="/api")
-app.include_router(metrics_router, prefix="/api")
-app.include_router(analysis_router, prefix="/api")
-app.include_router(recommendations_router, prefix="/api")
-app.include_router(alerts_router, prefix="/api")
-app.include_router(reports_router, prefix="/api")
-app.include_router(settings_router, prefix="/api")
+# Include API routers under /api and /api/v1
+for prefix in ("/api", "/api/v1"):
+    app.include_router(system_router, prefix=prefix)
+    app.include_router(auth_router, prefix=prefix)
+    app.include_router(dashboard_router, prefix=prefix)
+    app.include_router(resources_router, prefix=prefix)
+    app.include_router(metrics_router, prefix=prefix)
+    app.include_router(analysis_router, prefix=prefix)
+    app.include_router(recommendations_router, prefix=prefix)
+    app.include_router(alerts_router, prefix=prefix)
+    app.include_router(reports_router, prefix=prefix)
+    app.include_router(settings_router, prefix=prefix)
 
 @app.get("/")
 def root():

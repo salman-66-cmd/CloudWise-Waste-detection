@@ -7,6 +7,7 @@ from app.api.deps import get_db
 router = APIRouter(prefix="", tags=["System"])
 
 @router.get("/health")
+@router.get("/system/health")
 def health_check(db: Session = Depends(get_db)):
     db_status = "healthy"
     try:

@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     UNATTACHED_STORAGE_DAYS_THRESHOLD: int = 7
     LOW_TRAFFIC_LB_MBPS_THRESHOLD: float = 0.5
     STALE_RESOURCE_DAYS_THRESHOLD: int = 14
+    OBSERVATION_WINDOW_DAYS: int = 7
     MIN_OBSERVATION_METRICS_COUNT: int = 5  # require at least 5 readings for high confidence
     
     # Optional AWS Integration
